@@ -1,6 +1,4 @@
-/*
-Send Feedback
-For a given singly linked list of integers, find and return the node present at the middle of the list.
+/*For a given singly linked list of integers, find and return the node present at the middle of the list.
 Note :
 
 If the length of the singly linked list is even, then return the first middle node.
