@@ -102,3 +102,53 @@ Node<int>* constructLinkedList(BinaryTreeNode<int>* root) {
     return help(root).head;
 }
 
+
+//OR
+/*
+template <typename T>
+class Node {
+   public:
+    T data;
+    Node<T>* next;
+    Node(T data) {
+        this->data = data;
+        this->next = NULL;
+    }
+};
+
+template <typename T>
+class BinaryTreeNode {
+   public:
+    T data;
+    BinaryTreeNode<T>* left;
+    BinaryTreeNode<T>* right;
+
+    BinaryTreeNode(T data) {
+        this->data = data;
+        left = NULL;
+        right = NULL;
+    }
+};
+
+Node<int>* constructLinkedList(BinaryTreeNode<int>* root) {
+    if(root == NULL){
+        Node<int>* node = NULL;
+        return node;
+    }
+    Node<int>* node = new Node<int>(root->data);
+    Node<int>* leftHead = constructLinkedList(root -> left);
+    Node<int>* rightHead = constructLinkedList(root -> right);
+    Node<int>* temp = leftHead;
+    if(leftHead == NULL){
+        node -> next = rightHead;
+        return node;
+    }
+    while(temp -> next != NULL){
+        temp = temp -> next;
+    }
+    temp -> next = node;
+    node -> next = rightHead;
+    return leftHead;
+}
+
+*/
