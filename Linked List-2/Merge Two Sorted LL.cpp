@@ -125,3 +125,25 @@ Node *mergeTwoSortedLinkedLists(Node *head1, Node *head2)
     return head;
 }
 
+//or
+/*
+Node* mergeTwoSortedLinkedLists(Node* l1,Node* l2) {
+    if(l1==NULL) 
+        return l2;
+    if(l2==NULL) 
+        return l1;
+    Node* res;
+    if(l1->val<l2->val)
+    {
+        res=l1;
+        res->next=mergeTwosortedLinkedLists(l1->next,l2);
+    }
+    else
+    {
+        res=l2;
+        res->next=mergeTwoSortedLinkedLists(l1,l2->next);
+    }
+    return res;
+}
+
+*/
