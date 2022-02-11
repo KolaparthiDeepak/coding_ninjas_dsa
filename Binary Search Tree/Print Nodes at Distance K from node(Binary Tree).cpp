@@ -58,4 +58,57 @@ Sample Output 2:
 */
 
 
+void printNodesAtKDistance(BinaryTreeNode<int> *root, int k){
+    if(root == NULL || k < 0){
+        return;
+    }    
+    else if(k == 0){
+        cout<<root -> data<<"\n";
+        return;
+    }
+    else{
+        printNodesAtKDistance(root -> left, k-1);
+        printNodesAtKDistance(root -> right, k-1);
+    }
+}
+
+int nodesAtDistanceKHelper(BinaryTreeNode<int> *root, int node, int k){
+    if(root == NULL){
+        return -1;
+    }
+    else if(root -> data == node){
+        printNodesAtKDistance(root, k);
+        return 0;
+    }
+    
+    int ld = nodesAtDistanceKHelper(root -> left, node, k);
+    if(ld != -1){
+        if(ld + 1 == k){
+            cout<<root -> data<<"\n";
+        }
+        else{
+            printNodesAtKDistance(root -> right, k - ld - 2);
+        }
+        return ld + 1;
+    }
+    
+    int rd = nodesAtDistanceKHelper(root -> right, node, k);
+    if(rd != -1){
+        if(rd + 1 == k){
+            cout<<root -> data<<"\n";
+        }
+        else{
+            printNodesAtKDistance(root->left, k - rd - 2);
+        }
+        return rd + 1;
+    }
+    
+    return -1;
+}
+
+void nodesAtDistanceK(BinaryTreeNode<int> *root, int node, int k) {
+    nodesAtDistanceKHelper(root, node, k); 
+}
+
+
 
