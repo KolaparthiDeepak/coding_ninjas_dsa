@@ -25,3 +25,21 @@ Sample Output 1:
 2
 */
 
+#include<unordered_map>
+int pairSum(int *input, int n) {
+	// Write your code here
+    unordered_map<int,int> a;
+    int count=0;
+    for (int i=0;i<n;i++)
+    {
+        if(a.count(-1*input[i])>0)
+        {
+            if(a[-1*input[i]]>0)
+            {
+                count+=a[-input[i]];
+            }
+        }
+       a[input[i]]++;
+    } 	
+    return count;
+}
