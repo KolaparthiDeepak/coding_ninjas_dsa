@@ -37,3 +37,24 @@ Sample Output 2 :
 6
 */
 
+#include<unordered_map>
+int getPairsWithDifferenceK(int *arr, int n, int k) {
+	// Write your code here
+    unordered_map<int,int> freq;
+    int ans=0;
+    for(int i=0;i<n;i++) 
+    {
+        int plus=arr[i]+k;
+        ans+=freq[plus];
+
+        if (k!=0) 
+        {
+            int minus=arr[i]-k;
+            ans+=freq[minus];
+        }
+        freq[arr[i]]++;
+    }
+    return ans;
+}
+
+
