@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int fibo(int n) {
+int fibo_1(int n) {
 	if(n <= 1) {
 		return n;
 	}
@@ -31,7 +31,7 @@ int fibo_helper(int n, int *ans) {
 	return ans[n];
 }
 
-int fibo_1_DP(int n) {
+int fibo_2(int n) {                                 //this method is memoization(top to down approach)
 	int *ans = new int[n+1];
 
 	for(int i = 0; i <= n; i++) {
@@ -41,8 +41,16 @@ int fibo_1_DP(int n) {
 	return fibo_helper(n, ans);
 }
 
-int main() {
-	int n;
-	cin >> n;
-	cout << fibo_1_DP(n) << endl;
+int fibo_3(int n) {                                //this method is dynamic programming(down to top approach)
+	int *ans = new int[n+1];
+
+	ans[0] = 0;
+	ans[1] = 1;
+
+	for(int i = 2; i <= n; i++) {
+		ans[i] = ans[i-1] + ans[i-2];
+	}
+
+	return ans[n];
 }
+
