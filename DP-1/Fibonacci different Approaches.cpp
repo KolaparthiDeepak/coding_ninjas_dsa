@@ -10,7 +10,7 @@ int fibo_1(int n) {
 	return a + b;
 }
 
-int fibo_helper(int n, int *ans) {
+int fibo_helper(int n, int *ans) {                            //Brute force approach
 	if(n <= 1) {
 		return n;
 	}
