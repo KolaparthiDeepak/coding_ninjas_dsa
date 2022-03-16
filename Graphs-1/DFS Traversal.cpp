@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void print_DFS(int** edges, int n, int sv, bool* visited){
+void DFS(int** edges, int n, int sv, bool* visited){
   cout << sv << endl;
   visited[sv] = true;
   for(int i=0; i<n; i++){
@@ -12,16 +12,30 @@ void print_DFS(int** edges, int n, int sv, bool* visited){
       if(visited[i]){
         continue;
       }
-      print_DFS(edges, n, i, visited);
+      DFS(edges, n, i, visited);
     }
   }
+}
+
+void DFS(int **edges,int n)
+{
+    bool* visited = new bool[n];
+    for(int i=0;i<n;i++)
+    {
+        visited[i]=false;
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(!visited[i])
+            DFS(edges,n,i,visited);
+    }
+    delete [] visited;
 }
 
 int main(){
   int n;
   int e;
   cin >> n >> e;
-
   int** edges = new int*[n];
   for(int i=0; i<n; i++){
     edges[i]=new int[n];
@@ -36,14 +50,8 @@ int main(){
     edges[f][s]=1;
     edges[s][f]=1;
   }
-
-  bool* visited = new bool[n];
-
-  for(int i=0; i<n; i++){
-    visited[i]=false;
-  }
-
-  print_DFS(edges, n, 0, visited);
+  
+  DFS(edges,n);
   // Delete all the memory
   return 0;
 }
